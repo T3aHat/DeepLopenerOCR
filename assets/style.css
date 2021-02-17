@@ -1,0 +1,40 @@
+textarea {
+  resize: none;
+}
+body {
+  overflow-y: hidden;
+  background-color: aliceblue;
+  user-select: none;
+}
+.translator_source {
+  float: left;
+  width: 50%;
+  height: 100%;
+  user-select: none;
+}
+.translator_target {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+.translator_target_message {
+  height: 1rem;
+}
+.settings_icon {
+  float: right;
+  cursor: pointer;
+}
+
+.translator_source_textarea {
+  float: left;
+  width: 100%;
+  height: calc(100% - 2rem);
+}
+.translator_target_textarea {
+  float: left;
+  width: 100%;
+  height: calc(100% - 2rem);
+}
+#target_lang {
+  cursor: pointer;
+}

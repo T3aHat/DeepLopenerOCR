@@ -1,0 +1,15 @@
+body {
+  background-color: aliceblue;
+  user-select: none;
+}
+.cancel_icon {
+  float: right;
+  cursor: pointer;
+  user-select: none;
+}
+div {
+  margin: 0.4rem 0;
+}
+.commandlist {
+  margin-left: 2rem;
+}

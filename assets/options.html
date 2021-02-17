@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DeepLopenerPROEXE/options</title>
+    <link rel="stylesheet" href="style_options.css">
+</head>
+<body>
+    <div class="main">
+        <div style="width: 100%;height:1rem;">
+            <span class="cancel_icon">
+                <img src="cancel.png" style="width:1rem;height:1rem;">
+            </span>
+        </div>
+        <div style="font-size: 2rem;">Settings</div>
+        <br>
+        <div>Default target language for translation</div>
+        <div>
+            <select id="target_lang">
+                <option value="EN-US">English(American)</option>
+                <option value="EN-GB">English(British)</option>
+                <option value="JA">Japanese</option>
+                <option value="DE">German</option>
+                <option value="FR">French</option>
+                <option value="ES">Spanish</option>
+                <option value="PT-PT">Portuguese</option>
+                <option value="PT-BR">Portuguese(Brazilian)</option>
+                <option value="IT">Italian</option>
+                <option value="NL">Dutch</option>
+                <option value="PL">Polish</option>
+                <option value="RU">Russian</option>
+                <option value="ZH">Chinese</option>
+            </select>
+        </div>
+
+        <br>
+        <br>
+        <div>Shortcut</div>
+        <label><input type="radio" name="shortcut" id="cccc" checked>Ctrl+C ×2</label><br>
+        <div class="ccand">
+            <label><input type="radio" name="shortcut"id="ccandthen">Ctrl+C and then</label>    <br>
+            <span class="commandlist">
+                <label><input type="checkbox" name="ctrl" id="ccand" checked disabled>Ctrl</label>
+                <label><input type="checkbox" name="alt" id="ccand" disabled>Alt</label>
+                <label><input type="checkbox" name="shift" id="ccand" disabled>Shift</label>
+                <input type="text" class="ccandlast" id="ccand"  size="1" maxlength="1" value="C" disabled>    
+            </span>
+        </div>
+
+        <br>
+        <br>
+
+        <div>
+            <a href="https://www.deepl.com/pro#developer" target="_blank">DeepL Pro API_KEY</a>
+        </div>
+        <input type="password" id="deeplpro_apikey">
+
+        <div>
+            <button type="submit" id="save">save</button>
+        </div>
+        
+    </div>
+    
+    <script type="text/javascript" src="eel.js"></script>
+    <script type="text/javascript" src="options.js">
+    </script>
+</body>
+</html>
