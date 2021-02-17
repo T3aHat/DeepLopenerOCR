@@ -26,7 +26,7 @@ python -m eel .\deeplopenerproexe.py assets --onefile --noconsole --icon favicon
 ```
 
 # Todo  
-* ウィンドウを閉じて終了する対策
+* ウィンドウを閉じて終了する対策  
 `close_callback`で`eel.start("main.html")`かつwindowを最小化?
     * chrome extensionの`chrome.windows.update(window.id, { state: "minimized" });`で対処?
 * Translate documents  
