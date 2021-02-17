@@ -20,9 +20,9 @@ DeepL Pro APIを用いて翻訳された結果が右の`textarea`に表示され
 * ここで`API_KEY`を保存する(現在は`config.ini`から取得できない場合はCUIでinputすることもできる)
 
 # exe化
-
+debugのため`--noconsole`用のコーディングはまだしていない
 ```
-python -m eel .\deeplopenerexe.py assets --onefile --noconsole --icon favicon.ico
+python -m eel .\deeplopenerproexe.py assets --onefile --noconsole --icon favicon.ico
 ```
 
 # Todo  

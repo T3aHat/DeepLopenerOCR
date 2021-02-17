@@ -1,6 +1,7 @@
+.gitignore
 __pycache__
 build
 dist
-deeplopenerexe.spec
+deeplopenerproexe.spec
 config.ini
 extension
