@@ -13,7 +13,7 @@ fst.then((res) => {
       "DeeoLopenerPROEXE extension should be installed to use this application."
     );
     document.querySelector(".message").innerHTML =
-      "<a href='https://github.com/T3aHat/DeepLopener_PRO/raw/main/extension/DeepLopenerPROEXE.zip'target='_blank' rel='noopener'>Download DeeoLopenerPROEXE extension</a>";
+      "<a href='https://github.com/T3aHat/DeepLopenerPROEXE/raw/main/extension/DeepLopenerPROEXE.zip'target='_blank' rel='noopener'>Download DeeoLopenerPROEXE extension</a>";
     document.querySelector(".message").addEventListener("click", (e) => {
       alert(
         "Next, drag-and-drop DeepLopenerPROEXE.zip to\nchrome://extensions\nto install the extension."

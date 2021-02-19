@@ -29,7 +29,7 @@ consoleで`deeplopenerpro.py`のタスクを終了しない限り，閉じても
 
 # exe化
 ```
-python -m eel .\deeplopenerproexe.py assets --onefile --noconsole --icon favicon.ico
+python -m eel .\deeplopenerproexe.py assets --onefile --noconsole --icon assets/favicon.ico
 ```
 
 # Todo  
