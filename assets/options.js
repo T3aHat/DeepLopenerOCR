@@ -25,15 +25,52 @@ fst.then((res) => {
   }
   document.querySelector(".ccandlast").value =
     commandlist[commandlist.length - 1];
-
-  console.log("first", target_lang + ":" + command + ":" + api_key + ":");
   document.querySelector("#target_lang").value = target_lang;
   document.querySelector("#deeplpro_apikey").value = api_key;
+  document.querySelector("#save").addEventListener("click", (e) => {
+    if (document.querySelector("#deeplpro_apikey").value == "") {
+      document.querySelector(".hidemessage").textContent = "Enter API_KEY";
+      document.querySelector(".save_message").textContent = "Enter API_KRY";
+      setTimeout(function () {
+        document.querySelector(".save_message").textContent = "";
+      }, 2000);
+    } else {
+      save();
+      document.querySelector(".save_message").textContent = "saved";
+      setTimeout(function () {
+        eel.py_open_options()();
+        window.open("main.html", "_parent");
+      }, 2000);
+    }
+  });
+  document.querySelector(".ccandlast").addEventListener("input", (e) => {
+    document.querySelector(".ccandlast").value = e.target.value.toUpperCase();
+  });
+
+  document.querySelector(".back_icon").addEventListener("click", (e) => {
+    eel.py_open_options()();
+    window.open("main.html", "_parent");
+  });
+  document.querySelector(".cancel_icon").addEventListener("click", (e) => {
+    eel.py_close()();
+    document.querySelector(".hidemessage").textContent = "close";
+  });
+  if (document.querySelector("#deeplpro_apikey").value == "") {
+    document.querySelector("#deeplpro_apikey").style.border = "2px solid red";
+    document.querySelector(".required").textContent = "Enter DeepL Pro API_KEY";
+  }
+  document.querySelector("#deeplpro_apikey").addEventListener("input", (e) => {
+    if (document.querySelector("#deeplpro_apikey").value == "") {
+      document.querySelector("#deeplpro_apikey").style.border = "2px solid red";
+      document.querySelector(".required").textContent =
+        "Enter DeepL Pro API_KEY";
+    } else {
+      document.querySelector("#deeplpro_apikey").style.border = "";
+      document.querySelector(".required").textContent = "";
+    }
+  });
 });
 
-document.querySelector(".cancel_icon").addEventListener("click", (e) => {
-  window.open("main.html", "_parent");
-});
 document.querySelector("#cccc").addEventListener("click", (e) => {
   for (ccand of document.querySelectorAll("#ccand")) {
     ccand.disabled = "disabled";
@@ -62,24 +99,13 @@ function save() {
         command += "+" + ccand.value;
       }
     }
-    console.log(command);
   } else {
     command = "ctrl+C";
   }
-  console.log(command, document.querySelector("#deeplpro_apikey").value);
   let save_settings = eel.py_save_settings(
     document.querySelector("#target_lang").value,
     command,
     document.querySelector("#deeplpro_apikey").value
   )();
-  save_settings.then((res) => {
-    console.log(res);
-  });
+  save_settings.then((res) => {});
 }
-
-document.querySelector("#save").addEventListener("click", (e) => {
-  save();
-});
-document.querySelector(".ccandlast").addEventListener("input", (e) => {
-  document.querySelector(".ccandlast").value = e.target.value.toUpperCase();
-});

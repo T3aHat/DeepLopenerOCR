@@ -1,8 +1,7 @@
+from re import T
 import eel
-import os
-import subprocess
+import sys
 import time
-import shutil
 import keyboard
 import pyperclip
 import configparser
@@ -10,8 +9,8 @@ import configparser
 
 @eel.expose
 def py_first_target():
-    print(command)
-    print(target_lang, command, api_key)
+    global firstFlag
+    firstFlag = True
     return target_lang, command, api_key
 
 
@@ -20,7 +19,6 @@ def py_save_settings(targetlang, cmd, apikey):
     global target_lang, command, api_key
     command = cmd
     target_lang = targetlang
-    print(targetlang, command, apikey)
 
     config.set(section, "target_lang", target_lang)
     if(apikey != ""):
@@ -33,18 +31,25 @@ def py_save_settings(targetlang, cmd, apikey):
     if(command != "ctrl+C"):
         keyboard.add_hotkey(command, send_clipboard,
                             args=[target_lang, api_key])
-    # write settings
     with open("config.ini", "w")as f:
         config.write(f)
     return "saved"+command
 
 
+@eel.expose
+def py_open_options():
+    global optionsFlag
+    optionsFlag = True
+
+
+@eel.expose
+def py_close():
+    sys.exit()
+
+
 def send_clipboard(target_lang, api_key):
     global now, beforekeycc
-    print("sendclipboard:"+target_lang+" : "+api_key)
-    print(keyboard.is_pressed("ctrl+C"))
     if(not keyboard.is_pressed("ctrl+C") and not beforekeycc):
-        print("VV")
         pass
     elif(time.time()-now < 1 and pyperclip.paste() != ""):
         eel.js_translate(pyperclip.paste(), target_lang, api_key)
@@ -52,21 +57,39 @@ def send_clipboard(target_lang, api_key):
     beforekeycc = keyboard.is_pressed("ctrl+C")
 
 
+def onCloseWindow(page, sockets):
+    global optionsFlag
+    if(not firstFlag):
+        sys.exit()
+    elif(not optionsFlag):
+        eel.start("main.html", block=False, clsose_callback=onCloseWindow)
+        eel.sleep(1)  # 読み込まれるまで待機(雑)
+        eel.js_minimize()
+    optionsFlag = False
+
+
 if __name__ == '__main__':
     now = time.time()
     config = configparser.ConfigParser()
     section = "DeepLopenerPROEXE"
     beforekeycc = True
+    optionsFlag = False
+    firstFlag = False
     try:
         config.read("config.ini")
         target_lang = config.get(section, "target_lang")
         api_key = config.get(section, "api_key")
         command = config.get(section, "command")
-        keyboard.add_hotkey(command, send_clipboard,
-                            args=[target_lang, api_key])
+        if(command != "ctrl+C"):
+            keyboard.add_hotkey(command, send_clipboard,
+                                args=[target_lang, api_key])
     except:
+        '''
         target_lang = input("target language : ")
         api_key = input("DeepL Pro API_KEY : ")
+        '''
+        target_lang = "JA"
+        api_key = ""
         command = "ctrl+C"
         config.add_section(section)
         config.set(section, "target_lang", target_lang)
@@ -78,4 +101,4 @@ if __name__ == '__main__':
     keyboard.add_hotkey('ctrl+C', send_clipboard,
                         args=[target_lang, api_key])
     eel.init("assets")
-    eel.start("main.html")
+    eel.start("main.html", close_callback=onCloseWindow)

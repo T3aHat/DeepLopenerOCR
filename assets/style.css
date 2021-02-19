@@ -9,13 +9,13 @@ body {
 .translator_source {
   float: left;
   width: 50%;
-  height: 100%;
+  height: calc(100% - 2rem);
   user-select: none;
 }
 .translator_target {
   float: left;
   width: 50%;
-  height: 100%;
+  height: calc(100% - 2rem);
 }
 .translator_target_message {
   height: 1rem;
@@ -24,7 +24,12 @@ body {
   float: right;
   cursor: pointer;
 }
-
+.cancel_icon {
+  float: right;
+  margin-left: 1rem;
+  cursor: pointer;
+  user-select: none;
+}
 .translator_source_textarea {
   float: left;
   width: 100%;
@@ -37,4 +42,7 @@ body {
 }
 #target_lang {
   cursor: pointer;
+}
+.hidemessage {
+  display: none;
 }

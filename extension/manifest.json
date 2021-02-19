@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "DeepLopenerPROEXE",
+  "version": "0.0.1",
+  "permissions": ["tabs"],
+  "description": "Extension for DeepLopenerPROEXE",
+  "icons": { "128": "icon128.png" },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://localhost:8000/*"],
+      "js": ["contents.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
