@@ -24,12 +24,7 @@ body {
   float: right;
   cursor: pointer;
 }
-.cancel_icon {
-  float: right;
-  margin-left: 1rem;
-  cursor: pointer;
-  user-select: none;
-}
+
 .translator_source_textarea {
   float: left;
   width: 100%;
@@ -42,7 +37,4 @@ body {
 }
 #target_lang {
   cursor: pointer;
-}
-.hidemessage {
-  display: none;
 }

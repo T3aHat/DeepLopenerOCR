@@ -29,7 +29,6 @@ fst.then((res) => {
   document.querySelector("#deeplpro_apikey").value = api_key;
   document.querySelector("#save").addEventListener("click", (e) => {
     if (document.querySelector("#deeplpro_apikey").value == "") {
-      document.querySelector(".hidemessage").textContent = "Enter API_KEY";
       document.querySelector(".save_message").textContent = "Enter API_KRY";
       setTimeout(function () {
         document.querySelector(".save_message").textContent = "";
@@ -51,10 +50,7 @@ fst.then((res) => {
     eel.py_open_options()();
     window.open("main.html", "_parent");
   });
-  document.querySelector(".cancel_icon").addEventListener("click", (e) => {
-    eel.py_close()();
-    document.querySelector(".hidemessage").textContent = "close";
-  });
+
   if (document.querySelector("#deeplpro_apikey").value == "") {
     document.querySelector("#deeplpro_apikey").style.border = "2px solid red";
     document.querySelector(".required").textContent = "Enter DeepL Pro API_KEY";

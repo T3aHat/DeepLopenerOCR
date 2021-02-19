@@ -10,12 +10,7 @@ input {
   cursor: pointer;
   user-select: none;
 }
-.cancel_icon {
-  float: right;
-  margin-left: 1rem;
-  cursor: pointer;
-  user-select: none;
-}
+
 div {
   margin: 0.4rem 0;
 }
@@ -27,9 +22,7 @@ div {
   font-size: 0.8rem;
   color: red;
 }
-.hidemessage {
-  display: none;
-}
+
 .save_message {
   height: 0.8rem;
   font-size: 0.8rem;

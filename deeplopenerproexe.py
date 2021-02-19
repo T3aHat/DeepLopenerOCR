@@ -44,28 +44,25 @@ def py_open_options():
 
 @eel.expose
 def py_close():
-    sys.exit()
+    # sys.exit()
+    pass
 
 
 def send_clipboard(target_lang, api_key):
+    print("key detect")
     global now, beforekeycc
     if(not keyboard.is_pressed("ctrl+C") and not beforekeycc):
         pass
     elif(time.time()-now < 1 and pyperclip.paste() != ""):
+        eel.start("main.html", block=False, clsose_callback=onCloseWindow)
+        eel.sleep(1)  # 読み込まれるまで待機(雑)
         eel.js_translate(pyperclip.paste(), target_lang, api_key)
     now = time.time()
     beforekeycc = keyboard.is_pressed("ctrl+C")
 
 
 def onCloseWindow(page, sockets):
-    global optionsFlag
-    if(not firstFlag):
-        sys.exit()
-    elif(not optionsFlag):
-        eel.start("main.html", block=False, clsose_callback=onCloseWindow)
-        eel.sleep(1)  # 読み込まれるまで待機(雑)
-        eel.js_minimize()
-    optionsFlag = False
+    pass
 
 
 if __name__ == '__main__':
