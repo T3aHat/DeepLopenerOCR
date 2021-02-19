@@ -1,4 +1,4 @@
-let fst = eel.py_first_target()();
+let fst = eel.py_get_settings()();
 fst.then((res) => {
   target_lang = res[0];
   command = res[1];

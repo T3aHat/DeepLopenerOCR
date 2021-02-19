@@ -1,7 +1,7 @@
 let target_lang;
 let command;
 let api_key;
-let fst = eel.py_first_target()();
+let fst = eel.py_get_settings()();
 fst.then((res) => {
   target_lang = res[0];
   command = res[1];
@@ -17,6 +17,10 @@ fst.then((res) => {
     document.querySelector(".translator_source_textarea").value = clipboard;
     document.querySelector("#target_lang").value = target_lang;
     api_translate(clipboard, target_lang, api_key);
+  }
+  eel.expose(js_close_first);
+  function js_close_first() {
+    window.close();
   }
 
   function api_translate(txt, target_lang, api_key) {

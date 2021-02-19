@@ -5,10 +5,11 @@ import time
 import keyboard
 import pyperclip
 import configparser
+import threading
 
 
 @eel.expose
-def py_first_target():
+def py_get_settings():
     global firstFlag
     firstFlag = True
     return target_lang, command, api_key
@@ -65,6 +66,10 @@ def onCloseWindow(page, sockets):
     pass
 
 
+def work1():
+    eel.js_close_first()
+
+
 if __name__ == '__main__':
     now = time.time()
     config = configparser.ConfigParser()
@@ -98,4 +103,6 @@ if __name__ == '__main__':
     keyboard.add_hotkey('ctrl+C', send_clipboard,
                         args=[target_lang, api_key])
     eel.init("assets")
+    t = threading.Timer(1, work1)
+    t.start()
     eel.start("main.html", close_callback=onCloseWindow)
