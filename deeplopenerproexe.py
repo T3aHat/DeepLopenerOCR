@@ -51,13 +51,14 @@ def py_close():
 
 def send_clipboard(target_lang, api_key):
     print("key detect")
-    global now, beforekeycc
+    global now, beforekeycc, beforetxt
     if(not keyboard.is_pressed("ctrl+C") and not beforekeycc):
         pass
-    elif(time.time()-now < 1 and pyperclip.paste() != ""):
+    elif(time.time()-now < 1 and pyperclip.paste() != "" and pyperclip.paste() != beforetxt):
         eel.start("main.html", block=False, clsose_callback=onCloseWindow)
         eel.sleep(1)  # 読み込まれるまで待機(雑)
         eel.js_translate(pyperclip.paste(), target_lang, api_key)
+        beforetxt = pyperclip.paste()
     now = time.time()
     beforekeycc = keyboard.is_pressed("ctrl+C")
 
@@ -77,6 +78,7 @@ if __name__ == '__main__':
     beforekeycc = True
     optionsFlag = False
     firstFlag = False
+    beforetxt = ""
     try:
         config.read("config.ini")
         target_lang = config.get(section, "target_lang")
