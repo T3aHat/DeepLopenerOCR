@@ -20,11 +20,25 @@ DeepL Pro APIを用いて翻訳された結果が右の`textarea`に表示され
 * `ctrl+C`+任意のショートカットを割り当てられる
 * ここで`API_KEY`を保存する
 
-# 疑似常駐化
-起動したウィンドウは右上の
-<img src="https://github.com/T3aHat/DeepLopenerPROEXE/raw/main/assets/cancel.png" width="16px" height="16px">
-を押すか，
-consoleで`deeplopenerpro.py`のタスクを終了しない限り，閉じても再度最小化して復活する．
+# 常駐化
+裏で常に`keyboard.add_hotkey()`にてキー入力を確認している．
+
+# 起動時実行
+`add_to_startup()`は
+
+```
+bat_file.write("cd "+folder_path+'\nstart "" ' +
+                   folder_path+"\dist\deeplopenerproexe.exe")
+```
+↑にてpyinstallerで固めた`.exe`を，
+
+```
+bat_file.write("cd "+folder_path+'\nstart "" ' +file_path)
+
+```
+↑にて`.py`をそれぞれWindows起動時に実行するためのファイルを自動的に作成して適当な場所に保存する．  
+ただし，上の場合は`cmd.exe`が出てしまうので，これが出てこないショートカットを作成して該当箇所に保存するようにしたい．
+
 
 
 # exe化
@@ -33,4 +47,3 @@ python -m eel .\deeplopenerproexe.py assets --onefile --noconsole --icon assets/
 ```
 
 # Todo  
-* 起動時自動起動の簡略化
