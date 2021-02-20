@@ -3,4 +3,5 @@ __pycache__
 build
 dist
 deeplopenerproexe.spec
+deeplopenerproexe.exe
 config.ini

@@ -6,13 +6,34 @@ import keyboard
 import pyperclip
 import configparser
 import threading
+import os
+import getpass
+
+USER_NAME = getpass.getuser()
+
+
+def add_to_startup():
+    folder_path = os.path.dirname(os.path.realpath(__file__))
+    file_path = folder_path+"\deeplopenerproexe.py"
+    bat_path = r"C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" % USER_NAME
+    with open(bat_path + "\\" + "open.bat", "w+") as bat_file:
+        bat_file.write("cd "+folder_path+'\nstart "" ' +
+                       folder_path+"\dist\deeplopenerproexe.exe")
+    return folder_path
+
+
+add_to_startup()
 
 
 @eel.expose
 def py_get_settings():
     global firstFlag
-    firstFlag = True
-    return target_lang, command, api_key
+    if(firstFlag):
+        firstFlag = False
+        return target_lang, command, api_key, True
+    else:
+        firstFlag = False
+        return target_lang, command, api_key, False
 
 
 @ eel.expose
@@ -43,12 +64,6 @@ def py_open_options():
     optionsFlag = True
 
 
-@eel.expose
-def py_close():
-    # sys.exit()
-    pass
-
-
 def send_clipboard(target_lang, api_key):
     print("key detect")
     global now, beforekeycc, beforetxt
@@ -67,18 +82,15 @@ def onCloseWindow(page, sockets):
     pass
 
 
-def work1():
-    eel.js_close_first()
-
-
 if __name__ == '__main__':
     now = time.time()
     config = configparser.ConfigParser()
     section = "DeepLopenerPROEXE"
     beforekeycc = True
     optionsFlag = False
-    firstFlag = False
+    firstFlag = True
     beforetxt = ""
+
     try:
         config.read("config.ini")
         target_lang = config.get(section, "target_lang")
@@ -105,6 +117,4 @@ if __name__ == '__main__':
     keyboard.add_hotkey('ctrl+C', send_clipboard,
                         args=[target_lang, api_key])
     eel.init("assets")
-    t = threading.Timer(1, work1)
-    t.start()
     eel.start("main.html", close_callback=onCloseWindow)

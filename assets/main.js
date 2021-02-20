@@ -6,6 +6,10 @@ fst.then((res) => {
   target_lang = res[0];
   command = res[1];
   api_key = res[2];
+  if (res[3]) {
+    //first open
+    window.close();
+  }
   document.querySelector("#target_lang").value = target_lang;
 
   if (api_key == "") {
