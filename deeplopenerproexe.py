@@ -1,18 +1,15 @@
-from re import T
 import eel
-import sys
 import time
 import keyboard
 import pyperclip
 import configparser
-import threading
 import os
 import getpass
 
 USER_NAME = getpass.getuser()
 
 
-def add_to_startup():
+def add_to_startup_bat():
     folder_path = os.path.dirname(os.path.realpath(__file__))
     file_path = folder_path+"\deeplopenerproexe.py"
     bat_path = r"C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" % USER_NAME
@@ -22,7 +19,7 @@ def add_to_startup():
     return folder_path
 
 
-add_to_startup()
+# add_to_startup_bat()
 
 
 @eel.expose
@@ -100,10 +97,6 @@ if __name__ == '__main__':
             keyboard.add_hotkey(command, send_clipboard,
                                 args=[target_lang, api_key])
     except:
-        '''
-        target_lang = input("target language : ")
-        api_key = input("DeepL Pro API_KEY : ")
-        '''
         target_lang = "JA"
         api_key = ""
         command = "ctrl+C"
