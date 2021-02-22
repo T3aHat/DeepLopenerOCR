@@ -6,18 +6,18 @@ import configparser
 import os
 import getpass
 
-USER_NAME = getpass.getuser()
 
+# batから実行する場合はcmd.exeが出てしまうので
+# .lnkを作成してStart Menuに実行した方が見栄えが良い
 
 def add_to_startup_bat():
     folder_path = os.path.dirname(os.path.realpath(__file__))
     file_path = folder_path+"\deeplopenerproexe.py"
-    bat_path = r"C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" % USER_NAME
+    bat_path = r"C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" % getpass.getuser()
     with open(bat_path + "\\" + "open.bat", "w+") as bat_file:
         bat_file.write("cd "+folder_path+'\nstart "" ' +
                        folder_path+"\dist\deeplopenerproexe.exe")
     return folder_path
-
 
 # add_to_startup_bat()
 
