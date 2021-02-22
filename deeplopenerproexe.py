@@ -110,4 +110,5 @@ if __name__ == '__main__':
     keyboard.add_hotkey('ctrl+C', send_clipboard,
                         args=[target_lang, api_key])
     eel.init("assets")
-    eel.start("main.html", close_callback=onCloseWindow)
+    while True:
+        eel.start("main.html", close_callback=onCloseWindow)
