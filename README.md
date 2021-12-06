@@ -3,8 +3,8 @@ DeepLのクライアント版にてDeepL API契約での恩恵を得られない
 
 
 ## メイン部
-![exe.png](https://github.com/T3aHat/DeepLopenerPROEXE/raw/main/images/exe.png)__DeepLopenerEXE__
-![dl.png](https://github.com/T3aHat/DeepLopenerPROEXE/raw/main/images/dl.png)__[本家](https://www.deepl.com/app)__  
+![exe.png](https://github.com/T3aHat/DeepLopenerEXE/raw/main/images/exe.png)__DeepLopenerEXE__
+![dl.png](https://github.com/T3aHat/DeepLopenerEXE/raw/main/images/dl.png)__[本家](https://www.deepl.com/app)__  
 
 * `deeplopenerexe.py`起動時に`ctrl+C`を1秒以内に2回入力すると，クリップボードのテキストが左の`textarea`に入力されて，
 DeepL APIを用いて翻訳された結果が右の`textarea`に表示される
@@ -12,8 +12,8 @@ DeepL APIを用いて翻訳された結果が右の`textarea`に表示される
 * `Translate into`の横の一覧から翻訳先言語を選択でき，変更すると再度その言語にて翻訳される
   
 ## Settings
-![settings.png](https://github.com/T3aHat/DeepLopenerPROEXE/raw/main/images/settings.png)__DeepLopenerEXE__
-![dl2.png](https://github.com/T3aHat/DeepLopenerPROEXE/raw/main/images/dl2.png)__[本家](https://www.deepl.com/app)__  
+![settings.png](https://github.com/T3aHat/DeepLopenerEXE/raw/main/images/settings.png)__DeepLopenerEXE__
+![dl2.png](https://github.com/T3aHat/DeepLopenerEXE/raw/main/images/dl2.png)__[本家](https://www.deepl.com/app)__  
 
 * メイン部の右上の歯車アイコンから遷移
 * `Default target language for translation`でコマンド実行時の翻訳先言語を指定する
@@ -47,6 +47,7 @@ python -m eel .\DeepLopenerEXE.py assets --onefile --noconsole --icon assets/fav
 
 # OCR機能
 クリップボードの変化を常に監視し，画像データになった場合はTesseractを使用したOCRを行い(English)，DeepLに投げる．
+![ocr.gif](https://github.com/T3aHat/DeepLopenerEXE/raw/main/images/ocr.gif)
 
 # Todo
 - OCR機能使用のための環境構築法をまとめて記載
