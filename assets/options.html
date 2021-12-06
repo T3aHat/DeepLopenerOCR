@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>DeepLopenerPROEXE/options</title>
+    <title>DeepLopenerEXE/options</title>
     <link rel="stylesheet" href="style_options.css">
 </head>
 <body>
@@ -51,9 +51,15 @@
         <br>
 
         <div>
-            <a href="https://www.deepl.com/pro#developer" target="_blank">DeepL Pro API_KEY</a>
+            <a href="https://www.deepl.com/pro#developer" target="_blank">DeepL API_KEY</a>
         </div>
-        <input type="password" id="deeplpro_apikey">
+        <span class="free">
+            <select id="freeflag">
+                <option value="Free">Free</option>
+                <option value="Pro">Pro</option>
+            </select>
+        </span>  
+        <input type="password" id="deepl_apikey">
         <div class="required"></div>
 
         <div>

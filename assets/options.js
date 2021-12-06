@@ -1,8 +1,14 @@
 let fst = eel.py_get_settings()();
+let target_lang;
+let command;
+let api_key;
+let freeflag;
 fst.then((res) => {
   target_lang = res[0];
   command = res[1];
   api_key = res[2];
+  freeflag = res[3];
+  document.querySelector("#freeflag").value = freeflag;
   if (command == "ctrl+C") {
     document.querySelector("#cccc").checked = true;
   } else {
@@ -26,9 +32,9 @@ fst.then((res) => {
   document.querySelector(".ccandlast").value =
     commandlist[commandlist.length - 1];
   document.querySelector("#target_lang").value = target_lang;
-  document.querySelector("#deeplpro_apikey").value = api_key;
+  document.querySelector("#deepl_apikey").value = api_key;
   document.querySelector("#save").addEventListener("click", (e) => {
-    if (document.querySelector("#deeplpro_apikey").value == "") {
+    if (document.querySelector("#deepl_apikey").value == "") {
       document.querySelector(".save_message").textContent = "Enter API_KRY";
       setTimeout(function () {
         document.querySelector(".save_message").textContent = "";
@@ -51,17 +57,16 @@ fst.then((res) => {
     window.open("main.html", "_parent");
   });
 
-  if (document.querySelector("#deeplpro_apikey").value == "") {
-    document.querySelector("#deeplpro_apikey").style.border = "2px solid red";
-    document.querySelector(".required").textContent = "Enter DeepL Pro API_KEY";
+  if (document.querySelector("#deepl_apikey").value == "") {
+    document.querySelector("#deepl_apikey").style.border = "2px solid red";
+    document.querySelector(".required").textContent = "Enter DeepL API_KEY";
   }
-  document.querySelector("#deeplpro_apikey").addEventListener("input", (e) => {
-    if (document.querySelector("#deeplpro_apikey").value == "") {
-      document.querySelector("#deeplpro_apikey").style.border = "2px solid red";
-      document.querySelector(".required").textContent =
-        "Enter DeepL Pro API_KEY";
+  document.querySelector("#deepl_apikey").addEventListener("input", (e) => {
+    if (document.querySelector("#deepl_apikey").value == "") {
+      document.querySelector("#deepl_apikey").style.border = "2px solid red";
+      document.querySelector(".required").textContent = "Enter DeepL API_KEY";
     } else {
-      document.querySelector("#deeplpro_apikey").style.border = "";
+      document.querySelector("#deepl_apikey").style.border = "";
       document.querySelector(".required").textContent = "";
     }
   });
@@ -101,7 +106,8 @@ function save() {
   let save_settings = eel.py_save_settings(
     document.querySelector("#target_lang").value,
     command,
-    document.querySelector("#deeplpro_apikey").value
+    document.querySelector("#deepl_apikey").value,
+    document.querySelector("#freeflag").value
   )();
   save_settings.then((res) => {});
 }

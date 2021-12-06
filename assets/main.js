@@ -1,14 +1,16 @@
 let target_lang;
 let command;
 let api_key;
+let freeflag;
 let fst = eel.py_get_settings()();
 fst.then((res) => {
   target_lang = res[0];
   command = res[1];
   api_key = res[2];
-  if (res[3]) {
+  freeflag = res[3];
+  if (res[4]) {
     //first open
-    window.close();
+    window.close(); //たぶん書くべき
   }
   document.querySelector("#target_lang").value = target_lang;
 
@@ -29,7 +31,12 @@ fst.then((res) => {
 
   function api_translate(txt, target_lang, api_key) {
     document.querySelector(".message").textContent = "translating...";
-    var api_url = "https://api.deepl.com/v2/translate";
+    let api_url;
+    if (freeflag == "Free") {
+      api_url = "https://api-free.deepl.com/v2/translate";
+    } else {
+      api_url = "https://api.deepl.com/v2/translate";
+    }
     var params = {
       auth_key: api_key,
       text: txt,
@@ -116,7 +123,8 @@ fst.then((res) => {
           let save_settings = eel.py_save_settings(
             target_lang,
             command,
-            api_key
+            api_key,
+            freeflag
           )();
           save_settings.then((res) => {});
         }

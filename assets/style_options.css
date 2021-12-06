@@ -5,6 +5,11 @@ body {
 input {
   outline: none;
 }
+button,
+select {
+  cursor: pointer;
+}
+
 .back_icon {
   float: right;
   cursor: pointer;
