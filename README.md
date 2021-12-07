@@ -51,4 +51,4 @@ python -m eel .\DeepLopenerEXE.py assets --onefile --noconsole --icon assets/fav
 
 # Todo
 - OCR機能使用のための環境構築法をまとめて記載
-- `pyocr.tesseract.TESSERACT_CMD = r'C:\\Program Files\\Tesseract\\tesseract.exe'`などのコードの最適化(気が向いたら)
+- `pyocr.tesseract.TESSERACT_CMD = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'`などのコードの最適化(気が向いたら)

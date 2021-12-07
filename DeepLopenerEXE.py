@@ -6,30 +6,27 @@ import configparser
 import os
 import re
 import getpass
-import pyocr
 from PIL import Image
-import sys
 import threading
 import time
-import datetime
 from PIL import ImageGrab, Image
 import pyocr
 
 
 def ocr(im, target, apikey):
     global windowcnt
-    pyocr.tesseract.TESSERACT_CMD = r'C:\\Program Files\\Tesseract\\tesseract.exe'
+    pyocr.tesseract.TESSERACT_CMD = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
     engines = pyocr.get_available_tools()
     engine = engines[0]
     txt = engine.image_to_string(im, lang="eng")
-    print(txt)
     txt = re.sub(r"(\w)\n+?([\w])", r"\1 \2", txt)
     print(txt)
-    if(windowcnt == 0):
-        windowcnt += 1
-        eel.start("main.html", block=False, close_callback=onCloseWindow)
-        eel.sleep(1)  # 読み込まれるまで待機(雑)
-    eel.js_translate(txt, target, apikey)
+    if(len(txt.replace("\n", "").replace(" ", "")) > 0):
+        if(windowcnt == 0):
+            windowcnt += 1
+            eel.start("main.html", block=False, close_callback=onCloseWindow)
+            eel.sleep(1)  # 読み込まれるまで待機(雑)
+        eel.js_translate(txt, target, apikey)
 
 
 def capture(target, apikey):
