@@ -14,7 +14,7 @@ import pyocr
 
 
 def ocr(im, target, apikey):
-    global windowcnt
+    global win_opening
     pyocr.tesseract.TESSERACT_CMD = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
     engines = pyocr.get_available_tools()
     engine = engines[0]
@@ -22,8 +22,8 @@ def ocr(im, target, apikey):
     txt = re.sub(r"(\w)\n+?([\w])", r"\1 \2", txt)
     print(txt)
     if(len(txt.replace("\n", "").replace(" ", "")) > 0):
-        if(windowcnt == 0):
-            windowcnt += 1
+        if(not win_opening):
+            win_opening = True
             eel.start("main.html", block=False, close_callback=onCloseWindow)
             eel.sleep(1)  # 読み込まれるまで待機(雑)
         eel.js_translate(txt, target, apikey)
@@ -98,13 +98,13 @@ def py_open_options():
 
 
 def send_clipboard(target_lang, api_key):
-    global now, beforekeycc, beforetxt, windowcnt
+    global now, beforekeycc, beforetxt, win_opening
     print("key detect")
     if(not keyboard.is_pressed("ctrl+C") and not beforekeycc):
         pass
     elif(time.time()-now < 1 and pyperclip.paste() != "" and pyperclip.paste() != beforetxt):
-        if(windowcnt == 0):
-            windowcnt += 1
+        if(not win_opening):
+            win_opening = True
             eel.start("main.html", block=False, close_callback=onCloseWindow)
             eel.sleep(1)  # 読み込まれるまで待機(雑)
         eel.js_translate(pyperclip.paste(), target_lang, api_key)
@@ -114,8 +114,8 @@ def send_clipboard(target_lang, api_key):
 
 
 def onCloseWindow(page, sockets):
-    global windowcnt
-    windowcnt -= 1
+    global win_opening
+    win_opening = False
     pass
 
 
@@ -127,7 +127,7 @@ if __name__ == '__main__':
     optionsFlag = False
     firstFlag = True
     beforetxt = ""
-    windowcnt = 0
+    win_opening = False
 
     try:
         config.read("config.ini")
@@ -160,5 +160,5 @@ if __name__ == '__main__':
     t1.start()
     print("start")
     while True:
-        windowcnt += 1
+        win_opening = True
         eel.start("main.html", close_callback=onCloseWindow)
