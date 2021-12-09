@@ -10,7 +10,7 @@ fst.then((res) => {
   freeflag = res[3];
   if (res[4]) {
     //first open
-    window.close(); //たぶん書くべき
+    window.close();
   }
   document.querySelector("#target_lang").value = target_lang;
 

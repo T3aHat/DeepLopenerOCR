@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "DeepLopenerOCR",
+  "version": "0.0.1",
+  "permissions": ["tabs"],
+  "description": "An extension for DeepLopenerOCR",
+  "icons": { "128": "icon128.png" },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://localhost:8000/*"],
+      "js": ["contents.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

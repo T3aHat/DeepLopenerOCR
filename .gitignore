@@ -1,6 +1,6 @@
 .gitignore
 __pycache__
 build
-dist/config.ini
-deeplopenerexe.spec
+dist
+*.spec
 config.ini
