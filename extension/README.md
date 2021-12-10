@@ -6,7 +6,7 @@
 # Install 
 - Download `DeepLopenerOCR.zip` from
 
-https://github.com/T3aHat/DeepLopenerOCR/raw/main/DeepLopenerOCR.zip
+https://github.com/T3aHat/DeepLopenerOCR/raw/main/extension/DeepLopenerOCR.zip
 
 - Drag-and-drop `DeepLopenerOCR.zip` to `chrome://extensions`.  
   Ensure that the "Developer mode" checkbox in the top right-hand corner is checked.
