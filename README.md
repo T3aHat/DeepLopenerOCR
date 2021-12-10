@@ -15,6 +15,11 @@ DeepL APIを用いて翻訳された結果が右の`textarea`に表示される
 * 有効時，クリップボードの変化を常に監視し，画像データになった場合はTesseractを使用したOCRを行って (English) DeepLに投げる．
 ![ocr.gif](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/ocr.gif)
 
+## 拡張機能
+* DeepLopenerOCRで翻訳時にウィンドウがフォーカスされるようにする [Chrome拡張機能](https://github.com/T3aHat/DeepLopenerOCR/tree/main/extension)
+* ウィンドウを最小化している状態で新たに翻訳してもウィンドウが前に出てこないので使いにくいため実装したが，
+* インストールしなくてもDeepLopenerOCR自体は利用可能
+
 ## Settings
 ![settings.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/settings.png)__DeepLopenerOCR__
 ![dl2.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/dl2.png)__[本家](https://www.deepl.com/app)__  
