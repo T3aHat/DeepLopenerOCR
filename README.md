@@ -3,12 +3,14 @@ DeepLのクライアント版にてDeepL API契約での恩恵を得られない
 →tesseractを用いたOCRを利用できるアプリケーション．
 
 ## メイン部
-![exe.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/exe.png)__DeepLopenerOCR__
-![dl.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/dl.png)__[本家](https://www.deepl.com/app)__  
+__DeepLopenerOCR__  
+![exe.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/exe.png)  
+__[本家](https://www.deepl.com/app)__    
+![dl.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/dl.png)
 
 * 起動時に`ctrl+C`を0.5秒以内に2回入力すると，クリップボードのテキストが左の`textarea`に入力されて，
 DeepL APIを用いて翻訳された結果が右の`textarea`に表示される
-* 左の`textarea`で`ctrl + Enter`をしても翻訳できる
+* 左の`textarea`で`ctrl+Enter`をしても翻訳できる
 * `Translate into`の横の一覧から翻訳先言語を選択でき，変更すると再度その言語にて翻訳される
 
 ## OCR機能
@@ -17,12 +19,14 @@ DeepL APIを用いて翻訳された結果が右の`textarea`に表示される
 
 ## 拡張機能
 * DeepLopenerOCRで翻訳時にウィンドウがフォーカスされるようにする [Chrome拡張機能](https://github.com/T3aHat/DeepLopenerOCR/tree/main/extension)
-* ウィンドウを最小化している状態で新たに翻訳してもウィンドウが前に出てこないので使いにくいため実装したが，
+* ウィンドウを最小化している状態で新たに翻訳してもウィンドウが前に出てこなく使いにくいため実装した
 * インストールしなくてもDeepLopenerOCR自体は利用可能
 
 ## Settings
-![settings.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/settings.png)__DeepLopenerOCR__
-![dl2.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/dl2.png)__[本家](https://www.deepl.com/app)__  
+__DeepLopenerOCR__  
+![settings.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/settings.png)  
+__[本家](https://www.deepl.com/app)__   
+![dl2.png](https://github.com/T3aHat/DeepLopenerOCR/raw/main/images/dl2.png)  
 
 * メイン部の右上の歯車アイコンから遷移
 * `Default target language for translation`でコマンド実行時の翻訳先言語を指定する
