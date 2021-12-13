@@ -2,13 +2,16 @@ let fst = eel.py_get_settings()();
 let target_lang;
 let command;
 let api_key;
-let freeflag;
+let freeFlag;
+//ocrFlagはmainでのみ編集可とする
+let ocrFlag;
 fst.then((res) => {
   target_lang = res[0];
   command = res[1];
   api_key = res[2];
-  freeflag = res[3];
-  document.querySelector("#freeflag").value = freeflag;
+  freeFlag = res[3];
+  ocrFlag = res[4];
+  document.querySelector("#freeFlag").value = freeFlag;
   if (command == "ctrl+C") {
     document.querySelector("#cccc").checked = true;
   } else {
@@ -107,7 +110,8 @@ function save() {
     document.querySelector("#target_lang").value,
     command,
     document.querySelector("#deepl_apikey").value,
-    document.querySelector("#freeflag").value
+    document.querySelector("#freeFlag").value,
+    ocrFlag
   )();
   save_settings.then((res) => {});
 }

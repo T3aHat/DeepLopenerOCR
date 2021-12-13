@@ -6,15 +6,25 @@ body {
   background-color: aliceblue;
   user-select: none;
 }
+.ocr {
+  display: inline-flex;
+  flex-basis: auto;
+  align-items: center;
+}
+#ocr_text {
+  padding-right: 5px;
+}
 .translator_source {
   float: left;
   width: 50%;
+  padding-top: 0.5rem;
   height: calc(100% - 2rem);
   user-select: none;
 }
 .translator_target {
   float: left;
   width: 50%;
+  padding-top: 0.5rem;
   height: calc(100% - 2rem);
 }
 .translator_target_message {
@@ -37,4 +47,87 @@ body {
 }
 #target_lang {
   cursor: pointer;
+}
+
+/* for toggle button*/
+.switch2__label {
+  width: 44px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.switch2__content {
+  display: block;
+  position: relative;
+  border-radius: 30px;
+  height: 20px;
+  -webkit-transition: all 0.1s 0.4s;
+  -moz-transition: all 0.1s 0.4s;
+  -ms-transition: all 0.1s 0.4s;
+  -o-transition: all 0.1s 0.4s;
+  transition: all 0.1s 0.4s;
+  overflow: hidden;
+}
+.switch2__content:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  top: 0;
+  left: 0;
+  border: 1.5px solid #000000;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.switch2__content:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: transparent;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.switch2__input {
+  display: none;
+}
+.switch2__circle {
+  display: block;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #000000;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.switch2__input:checked ~ .switch2__circle {
+  left: 29px;
+  background-color: #fff;
+}
+.switch2__input:checked ~ .switch2__content {
+  border-color: transparent;
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -ms-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
+}
+.switch2__input:checked ~ .switch2__content:after {
+  background-color: #006494;
+  width: 100%;
 }

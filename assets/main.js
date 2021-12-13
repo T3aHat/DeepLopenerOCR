@@ -1,38 +1,41 @@
 let target_lang;
 let command;
 let api_key;
-let freeflag;
+let freeFlag;
+let ocrFlag;
 let fst = eel.py_get_settings()();
 fst.then((res) => {
   target_lang = res[0];
   command = res[1];
   api_key = res[2];
-  freeflag = res[3];
-  if (res[4]) {
+  freeFlag = res[3];
+  ocrFlag = res[4];
+  if (res[5]) {
     //first open
     window.close();
-  }
-  document.querySelector("#target_lang").value = target_lang;
-
-  if (api_key == "") {
-    eel.py_open_options()();
-    window.open("options.html", "_parent");
-  }
-  eel.expose(js_translate);
-  function js_translate(clipboard, target_lang, api_key) {
-    document.querySelector(".translator_source_textarea").value = clipboard;
+  } else {
     document.querySelector("#target_lang").value = target_lang;
-    api_translate(clipboard, target_lang, api_key);
-  }
-  eel.expose(js_close_first);
-  function js_close_first() {
-    window.close();
+    if (ocrFlag == "True") {
+      document.querySelector("#ocr_btn").checked = true;
+    } else {
+      document.querySelector("#ocr_btn").checked = false;
+    }
+    if (api_key == "") {
+      eel.py_open_options()();
+      window.open("options.html", "_parent");
+    }
+    eel.expose(js_translate);
+    function js_translate(clipboard, target_lang, api_key) {
+      document.querySelector(".translator_source_textarea").value = clipboard;
+      document.querySelector("#target_lang").value = target_lang;
+      api_translate(clipboard, target_lang, api_key);
+    }
   }
 
   function api_translate(txt, target_lang, api_key) {
     document.querySelector(".message").textContent = "translating...";
     let api_url;
-    if (freeflag == "Free") {
+    if (freeFlag == "Free") {
       api_url = "https://api-free.deepl.com/v2/translate";
     } else {
       api_url = "https://api.deepl.com/v2/translate";
@@ -109,6 +112,7 @@ fst.then((res) => {
       );
     }
   });
+
   document
     .querySelector(".translator_source_textarea")
     .addEventListener("keydown", (e) => {
@@ -124,14 +128,24 @@ fst.then((res) => {
             target_lang,
             command,
             api_key,
-            freeflag
+            freeFlag
           )();
           save_settings.then((res) => {});
         }
       }
     });
+
   document.querySelector(".settings_icon").addEventListener("click", (e) => {
     eel.py_open_options()();
     window.open("options.html", "_parent");
+  });
+
+  document.querySelector("#ocr_btn").addEventListener("click", (e) => {
+    if (ocrFlag == "False") {
+      ocrFlag = "True";
+    } else {
+      ocrFlag = "False";
+    }
+    eel.py_save_ocr_settings(ocrFlag);
   });
 });
