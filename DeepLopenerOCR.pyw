@@ -160,6 +160,5 @@ if __name__ == '__main__':
     eel.init("assets")
     eel.spawn(capture)
     print("start")
-    while True:
-        win_opening = True
-        eel.start("main.html", close_callback=onCloseWindow)
+    win_opening = True
+    eel.start("main.html", close_callback=onCloseWindow)
